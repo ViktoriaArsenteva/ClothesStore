@@ -1,0 +1,10 @@
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/vikulik/Downloads/javafx-sdk-19.0.2.1/lib/**/*.jar",
+        "/Users/vikulik/Desktop/mysql-connector-j-8.0.32/mysql-connector-j-8.0.32.jar"
+    ],
+    "git.ignoreLimitWarning": true
+}

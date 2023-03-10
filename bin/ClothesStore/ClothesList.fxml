@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClothesStore.ClothesListController">
+   <children>
+      <TableView fx:id="clothesTable" prefHeight="403.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+         <columns>
+            <TableColumn fx:id="vendorCodeCol" prefWidth="75.0" text="Артикул" />
+            <TableColumn fx:id="categoryCol" prefWidth="122.0" text="Категория" />
+            <TableColumn fx:id="nameCol" prefWidth="284.0" text="Наименование" />
+            <TableColumn fx:id="colorCol" prefWidth="82.0" text="Цвет" />
+            <TableColumn fx:id="sizeCol" prefWidth="72.0" text="Размер" />
+            <TableColumn fx:id="amountCol" prefWidth="152.0" text="Количество" />
+         </columns>
+      </TableView>
+   </children>
+</VBox>
