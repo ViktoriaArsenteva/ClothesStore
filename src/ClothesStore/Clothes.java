@@ -3,6 +3,7 @@ package ClothesStore;
  
 public class Clothes{
      
+    private int id;
     private String vendorCode;
     private String category;
     private String name;
@@ -10,7 +11,8 @@ public class Clothes{
     private String size;
     private int amount;
 
-    public Clothes(String vendorCode, String category, String name, String color, String size, int amount) {
+    public Clothes(int id, String vendorCode, String category, String name, String color, String size, int amount) {
+        this.id = id;
         this.vendorCode = vendorCode;
         this.category = category;
         this.name = name;
@@ -69,6 +71,14 @@ public class Clothes{
 
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

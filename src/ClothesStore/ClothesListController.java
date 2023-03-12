@@ -19,6 +19,9 @@ public class ClothesListController {
     private TableView<Clothes> clothesTable;
 
     @FXML
+    private TableColumn<Clothes, Integer> idCol;
+
+    @FXML
     private TableColumn<Clothes, String> vendorCodeCol;
 
     @FXML
@@ -41,11 +44,11 @@ public class ClothesListController {
         try {
             initData();
         } catch (SQLException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
 
         // устанавливаем тип и значение которое должно хранится в колонке
+        idCol.setCellValueFactory(new PropertyValueFactory<Clothes, Integer>("id"));
         vendorCodeCol.setCellValueFactory(new PropertyValueFactory<Clothes, String>("vendorCode"));
         categoryCol.setCellValueFactory(new PropertyValueFactory<Clothes, String>("category"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Clothes, String>("name"));
@@ -60,22 +63,25 @@ public class ClothesListController {
     // подготавливаем данные для таблицы
     private void initData() throws SQLException {
         DatabaseHandler dbHandler = new DatabaseHandler();
-        String data = dbHandler.getClothes();
+        String data = dbHandler.getAllClothes();
         try (PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(data)) {
             ResultSet resultSet = prSt.executeQuery();
             while (resultSet.next()) {
+                int dbId =resultSet.getInt("id");
                 String dbVendorCode = resultSet.getString("vendorCode");
                 String dbCategory = resultSet.getString("category");
                 String dbName = resultSet.getString("name");
                 String dbColor = resultSet.getString("color");
                 String dbSize = resultSet.getString("size");
                 int dbAmount =resultSet.getInt("amount");
-                clothesData.add(new Clothes(dbVendorCode, dbCategory, dbName, dbColor, dbSize, dbAmount));
+                clothesData.add(new Clothes(dbId,dbVendorCode, dbCategory, dbName, dbColor, dbSize, dbAmount));
    }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
+
+
 
 }
     

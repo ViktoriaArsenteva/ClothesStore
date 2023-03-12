@@ -27,9 +27,9 @@ public class BaseController {
             window.setScene(new Scene(root));
             window.initModality(Modality.APPLICATION_MODAL);
             window.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void ClickClothesList(ActionEvent actionEvent) throws IOException {
@@ -42,17 +42,14 @@ public class BaseController {
             window.setScene(new Scene(root));
             window.initModality(Modality.APPLICATION_MODAL);
             window.showAndWait();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void ClickClose(ActionEvent actionEvent) {
         Stage stage = (Stage) closeBtn.getScene().getWindow();
         stage.close();
     }
-
-    
-    
 
 }

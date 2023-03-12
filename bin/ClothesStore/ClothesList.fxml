@@ -4,16 +4,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="788.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClothesStore.ClothesListController">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="864.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ClothesStore.ClothesListController">
    <children>
-      <TableView fx:id="clothesTable" prefHeight="403.0" prefWidth="600.0" VBox.vgrow="ALWAYS">
+      <TableView fx:id="clothesTable" prefHeight="511.0" prefWidth="854.0" VBox.vgrow="ALWAYS">
          <columns>
-            <TableColumn fx:id="vendorCodeCol" prefWidth="75.0" text="Артикул" />
-            <TableColumn fx:id="categoryCol" prefWidth="122.0" text="Категория" />
-            <TableColumn fx:id="nameCol" prefWidth="284.0" text="Наименование" />
-            <TableColumn fx:id="colorCol" prefWidth="82.0" text="Цвет" />
-            <TableColumn fx:id="sizeCol" prefWidth="72.0" text="Размер" />
-            <TableColumn fx:id="amountCol" prefWidth="152.0" text="Количество" />
+            <TableColumn fx:id="idCol" prefWidth="44.0" text="№" />
+            <TableColumn fx:id="vendorCodeCol" prefWidth="120.73752975463867" text="Артикул" />
+            <TableColumn fx:id="categoryCol" prefWidth="143.18438720703125" text="Категория" />
+            <TableColumn fx:id="nameCol" prefWidth="316.31561279296875" text="Наименование" />
+            <TableColumn fx:id="colorCol" prefWidth="85.0467529296875" text="Цвет" />
+            <TableColumn fx:id="sizeCol" prefWidth="62.2498779296875" text="Размер" />
+            <TableColumn fx:id="amountCol" prefWidth="92.76556396484375" text="Количество" />
          </columns>
       </TableView>
    </children>

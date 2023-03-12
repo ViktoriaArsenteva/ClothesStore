@@ -49,10 +49,39 @@ public class DatabaseHandler extends Configs {
             }
     }
 
-    public String getClothes(){
-        String data = "SELECT" + " " + "*"
-                        + "FROM" + " " + Const.CLOTHES_TABLE;
+    public String getAllClothes(){
+        String data = "SELECT "  + "*"
+                        + "FROM " + Const.CLOTHES_TABLE;
         return data;
         
     }  
+
+    public boolean GetCount(String vendorCode, String category, String name, String size, String color) throws SQLException {
+        String data = "SELECT COUNT(*) FROM "
+        + Const.CLOTHES_TABLE + " " + "WHERE "
+        + Const.CLOTHES_VENDORCODE + " = " + "'" + vendorCode + "'" + " AND "
+        + Const.CLOTHES_CATEGORY + " = " + "'" + category + "'" + " AND "
+        + Const.CLOTHES_NAME + " = " + "'" + name + "'" + " AND "
+        + Const.CLOTHES_SIZE + " = " + "'" + size + "'" + " AND "
+        + Const.CLOTHES_COLOR + " = " + "'" + color + "'";
+        
+        boolean check = false;
+
+        DatabaseHandler dbHandler = new DatabaseHandler();
+        try (PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(data)) {
+            ResultSet resultSet = prSt.executeQuery(); 
+            System.out.println(resultSet);
+            while (resultSet.next()) {
+                int count = resultSet.getInt("COUNT(*)");
+                if (count == 0){check = true;}
+                else {check = false;}
+            }
+        }catch(ClassNotFoundException e){
+            e.printStackTrace();
+        }
+
+
+        return check;
+        
+    }
 }

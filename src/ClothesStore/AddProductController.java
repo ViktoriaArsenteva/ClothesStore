@@ -2,6 +2,9 @@ package ClothesStore;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 
 import javafx.collections.FXCollections;
@@ -42,7 +45,13 @@ public class AddProductController  {
     ObservableList<String> colorList = FXCollections.observableArrayList("Разноцветный", "Белый", "Черный", "Красный","Синий", "Голубой", "Розовый", "Желтый", "Зеленый", "Коричневый", "Серый", "Бежевый", "Фиолетовый");
 
 
+    // добавление категорий в choicebox
+    public void initialize() {
+        category.setItems(categoryList);
+        size.setItems(sizeList);
+        color.setItems(colorList);
 
+    }
     // метод зыкрытия модального окна по кнопке отмена
     public void ClickCancel(ActionEvent actionEvent) {
         Stage stage = (Stage) cancel.getScene().getWindow();
@@ -58,21 +67,28 @@ public class AddProductController  {
             String dbName = name.getText();
             String dbSize = size.getValue().toString();
             String dbColor = color.getValue().toString();
-            int dbaAmount;
-            dbaAmount = Integer.parseInt(amount.getText());
-            dbHandler.AddClothes(dbCategory, dbVendorCode, dbName, dbSize, dbColor, dbaAmount);
-            ErrorWindow("Succes",true);
-            Stage stage = (Stage) save.getScene().getWindow();
-            stage.close();
+            int dbAmount;
+            dbAmount = Integer.parseInt(amount.getText());
+            boolean check = dbHandler.GetCount(dbVendorCode, dbCategory, dbName, dbSize, dbColor);
+            if (check = true){
+                dbHandler.AddClothes(dbCategory, dbVendorCode, dbName, dbSize, dbColor, dbAmount);
+                ErrorOrSuccesWindow("Succes",true);
+                Stage stage = (Stage) save.getScene().getWindow();
+                stage.close();
+            }
+            else{
+                // реализовать метод который задает пользователю вопрос нужно ли добавить к имеющемуся количеству или заменить количество
+            }
 
 
         } catch (Exception e) {
-            ErrorWindow("Error",false);
+            e.printStackTrace();
+            ErrorOrSuccesWindow("Error",false);
         }
 
     }
     // метод вызывает окно ошибки или окно успешного сохранения
-    public void ErrorWindow(String title, boolean check) throws IOException {
+    public void ErrorOrSuccesWindow(String title, boolean check) throws IOException {
         try {
             String name;
             Stage window = new Stage();
@@ -94,12 +110,14 @@ public class AddProductController  {
             }
     }
 
-    public void initialize() {
-        category.setItems(categoryList);
-        size.setItems(sizeList);
-        color.setItems(colorList);
-
-    }
-
+    // private void CheckData(String dbVendorCode, String dbCategory, String dbName, String dbSize, String dbColor, int dbAmount) throws SQLException {
+    //     DatabaseHandler dbHandler = new DatabaseHandler();
+    //     String data = dbHandler.GetCount();
+    //     try (PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(data)) {
+    //         ResultSet resultSet = prSt.executeQuery();
+    //     } catch (ClassNotFoundException e) {
+    //         e.printStackTrace();
+    //     }
+    // }
 
 }
