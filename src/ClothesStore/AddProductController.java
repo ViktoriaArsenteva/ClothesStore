@@ -70,33 +70,35 @@ public class AddProductController  {
             int dbAmount;
             dbAmount = Integer.parseInt(amount.getText());
             boolean check = dbHandler.GetCount(dbVendorCode, dbCategory, dbName, dbSize, dbColor);
-            if (check = true){
+            if (check == true){
                 dbHandler.AddClothes(dbCategory, dbVendorCode, dbName, dbSize, dbColor, dbAmount);
-                ErrorOrSuccesWindow("Succes",true);
-                Stage stage = (Stage) save.getScene().getWindow();
-                stage.close();
+                ErrorOrSuccesWindow("Succes",0);
             }
-            else{
-                // реализовать метод который задает пользователю вопрос нужно ли добавить к имеющемуся количеству или заменить количество
+            else {
+                ErrorOrSuccesWindow(" ", 1);
             }
-
+            Stage stage = (Stage) save.getScene().getWindow();
+            stage.close();
 
         } catch (Exception e) {
             e.printStackTrace();
-            ErrorOrSuccesWindow("Error",false);
+            ErrorOrSuccesWindow("Error",2);
         }
 
     }
     // метод вызывает окно ошибки или окно успешного сохранения
-    public void ErrorOrSuccesWindow(String title, boolean check) throws IOException {
+    public void ErrorOrSuccesWindow(String title, int check) throws IOException {
         try {
             String name;
             Stage window = new Stage();
             FXMLLoader loader = new FXMLLoader();
-            if (check == true){
+            if (check == 0){
                 name = "SuccesWin.fxml";
             }
-            else{
+            else if (check == 1){
+                name = "ChoiceWin.fxml";
+            }
+            else {
                 name = "ErrorWin.fxml";
             }
             loader.setLocation(getClass().getResource(name));
@@ -109,6 +111,25 @@ public class AddProductController  {
                 e.printStackTrace();
             }
     }
+
+
+    // public int returnAmount() {
+    //     int dbAmount;
+    //         dbAmount = Integer.parseInt(amount.getText());
+    //     return dbAmount;
+    // }
+
+    // public int returnId() throws SQLException {
+    //     String dbCategory = category.getValue().toString();
+    //     String dbVendorCode = vendorCode.getText();
+    //     String dbName = name.getText();
+    //     String dbSize = size.getValue().toString();
+    //     String dbColor = color.getValue().toString();
+    //     DatabaseHandler dbHandler = new DatabaseHandler();
+    //     int id = dbHandler.SelectID(dbVendorCode, dbCategory, dbName, dbColor, dbSize);
+    //     return id;
+        
+    // }
 
     // private void CheckData(String dbVendorCode, String dbCategory, String dbName, String dbSize, String dbColor, int dbAmount) throws SQLException {
     //     DatabaseHandler dbHandler = new DatabaseHandler();

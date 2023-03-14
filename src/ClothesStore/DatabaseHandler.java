@@ -73,8 +73,10 @@ public class DatabaseHandler extends Configs {
             System.out.println(resultSet);
             while (resultSet.next()) {
                 int count = resultSet.getInt("COUNT(*)");
+                System.out.println(count);
                 if (count == 0){check = true;}
                 else {check = false;}
+                System.out.println(check);
             }
         }catch(ClassNotFoundException e){
             e.printStackTrace();
@@ -84,4 +86,44 @@ public class DatabaseHandler extends Configs {
         return check;
         
     }
+
+    // public void changeAmount(int id,int newAmount) throws SQLException{
+    //     String data = "UPDATE " + Const.CLOTHES_TABLE + " "
+    //                     + "SET Amount = " + "'" + "?" + "'"
+    //                     + " Where " + Const.CLOTHES_ID + " = "
+    //                     + "'" + id + "'";
+    //     DatabaseHandler dbHandler = new DatabaseHandler();
+    //     try (PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(data)) {
+
+    //         prSt.setInt(6, newAmount);
+            
+    //     }catch(ClassNotFoundException e){
+    //         e.printStackTrace();
+    //     }
+    // }
+
+//     public int SelectID(String vendorCode, String category, String name, String color,String size) throws SQLException {
+//         String data = "SELECT " + Const.CLOTHES_ID + " FROM " + Const.CLOTHES_TABLE
+//                         + "WHERE " 
+//                         + Const.CLOTHES_VENDORCODE + " = " + "'" + vendorCode + "'" + " AND "
+//                         + Const.CLOTHES_CATEGORY + " = " + "'" + category + "'" + " AND "
+//                         + Const.CLOTHES_NAME + " = " + "'" + name + "'" + " AND "
+//                         + Const.CLOTHES_SIZE + " = " + "'" + size + "'" + " AND "
+//                         + Const.CLOTHES_COLOR + " = " + "'" + color + "'";
+//         DatabaseHandler dbHandler = new DatabaseHandler();
+//         int id = 0;
+//         try (PreparedStatement prSt = dbHandler.getDbConnection().prepareStatement(data)) {
+//             ResultSet resultSet = prSt.executeQuery(); 
+//             System.out.println(resultSet);
+//             while (resultSet.next()) {
+//                 id = resultSet.getInt("id");
+//             }
+//             return id;
+//         }catch(ClassNotFoundException e){
+//             e.printStackTrace();
+//         }
+//         System.out.println(id);
+//         return id;
+
+// }
 }

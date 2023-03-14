@@ -3,6 +3,7 @@ package ClothesStore;
 public class Const {
     public static final String CLOTHES_TABLE = "Clothes";
 
+    public static final String CLOTHES_ID = "id";
     public static final String CLOTHES_VENDORCODE = "vendorCode";
     public static final String CLOTHES_CATEGORY = "Category";
     public static final String CLOTHES_NAME = "Name";

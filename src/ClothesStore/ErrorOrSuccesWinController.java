@@ -1,6 +1,7 @@
 package ClothesStore;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,11 +24,15 @@ public class ErrorOrSuccesWinController {
     @FXML
     private Button btnOK;
 
+
      
     public void ClickOk(ActionEvent actionEvent) {
         Stage stage = (Stage) btnOK.getScene().getWindow();
         stage.close();
     }
+
+    
+
 
     
 }
